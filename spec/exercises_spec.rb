@@ -29,7 +29,6 @@ describe 'SQL Exercises' do
   # http://api.rubyonrails.org/classes/ActiveRecord/Calculations.html
   context 'SUM' do
     it 'selects the sum gross of all films' do
-      pending
       Sequel.total_gross.should eq 7653531787
     end
   end
@@ -47,19 +46,16 @@ describe 'SQL Exercises' do
 
   context 'COUNT' do
     it "counts the number of action films" do
-      pending
       Sequel.total_by_genre("Action").should eq 10
     end
 
     it "counts the number of fantasy films" do
-      pending
       Sequel.total_by_genre("Fantasy").should eq 7
     end
   end
 
   context "AVG" do
     it "works out the average made for a Spielberg sequel" do
-      pending
       # Convert this to an integer just to make things easier
       Sequel.average_gross_for("Steven Spielberg").should eq 237351063
     end
@@ -67,20 +63,17 @@ describe 'SQL Exercises' do
 
   context 'MIN' do
     it "works out the minimum made by Peter Jackson" do
-      pending
       Sequel.minimum_made_by("Peter Jackson").should eq 926047111
     end
   end
 
   context 'MAX' do
     it "works out the maximum made by a film before 2000" do
-      pending
       Sequel.maximum_gross_before(2000).should eq 197870271
     end
   end
 
   context 'harder exercises' do
-
     it "finds the most earned by an action movie directed by Spielberg" do
       pending
       # This one is actually quite easy if you use the joins() method to help you
