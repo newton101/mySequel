@@ -75,13 +75,11 @@ describe 'SQL Exercises' do
 
   context 'harder exercises' do
     it "finds the most earned by an action movie directed by Spielberg" do
-      pending
       # This one is actually quite easy if you use the joins() method to help you
       Sequel.highest_grossing_by_genre_and_director("Action", "Steven Spielberg").should eq 317011114
     end
 
     it "finds genres with more than one film attached to them" do
-      pending
       # Make this return just an array with the tag names
       # This one is hard but easier if you just use find_by_sql() and then map() on the result
       # you'll need to do two joins and use HAVING

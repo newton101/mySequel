@@ -46,8 +46,14 @@ class Sequel < ActiveRecord::Base
     end
 
     def maximum_gross_before(year)
+      find_by_sql(["select max(gross_earnings) from sequels where year < ?", year]).first.max.to_i
+      # maximum(:gross_earnings, :conditions => ["year < ?", year])
+    end
 
-
+    def highest_grossing_by_genre_and_director(genre, director)
+      find_by_sql(["select max(gross_earnings) as highest_grossing from sequels inner join directors on directors.id = director_id inner join genres_sequels on sequels.id = sequel_id inner join genres on genres.id = genre_id where directors.name = ? and genres.name = ?", director, genre]).first.highest_grossing.to_i
+      # here different gvenres not making a difference?
+      # joins(:director, :genres).where(["directors.name = ? and genres.name = ?", director, genre]).maximum(:gross_earnings)
     end
   end
 end
